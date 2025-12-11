@@ -5,13 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TRAQ_Assessment_DLL.Entities
+namespace TRAQ_Assessment_DLL.Entities;
+
+public class TraqUser : BaseEntity
 {
-    public class TraqUser
-    {
-        [Key]
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

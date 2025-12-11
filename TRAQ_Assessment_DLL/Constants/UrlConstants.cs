@@ -11,5 +11,6 @@ namespace TRAQ_Assessment_DLL.Constants
         public const string Person = "Person";
         public const string Transaction = "Transaction";
         public const string User = "User";
+        public const string Account = "Account";
     }
 }

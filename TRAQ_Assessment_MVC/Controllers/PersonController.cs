@@ -12,8 +12,9 @@ public class PersonController : Controller
         this._personService = personService;
     }
 
-    public IActionResult Index()
+    [HttpGet]
+    public async Task<IActionResult> Index()
     {
-        return View();
+        return View(await _personService.GetViewModelList());
     }
 }

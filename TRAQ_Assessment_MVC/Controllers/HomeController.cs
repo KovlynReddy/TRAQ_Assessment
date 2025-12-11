@@ -18,6 +18,7 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
+        ViewData["Message"] = "Welcome";
         return View();
     }
 
@@ -30,6 +31,11 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Contact()
     {
+        ViewBag.Email = "kovlyn.reddy@gmail.com";
+        ViewBag.Cell = "(+27) 67 801 7809";
+        ViewBag.GitHub = "https://github.com/KovlynReddy";
+        ViewBag.LinkedIn = "https://www.linkedin.com/in/kovlyn-reddy-ba4a741a8/";
+
         return View();
     }
 }

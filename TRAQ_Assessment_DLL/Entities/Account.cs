@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TRAQ_Assessment_DLL.Entities;
 
-public class Person : BaseEntity
+public class Account : BaseEntity
 {
-    public string ID_Number { get; set; }
-    public string Surname { get; set; }
-    public string Name { get; set; }
+    public int Person_Code { get; set; }
+    public string Account_Number { get; set; }
+    public decimal Outstanding_Balance { get; set; }
 }
