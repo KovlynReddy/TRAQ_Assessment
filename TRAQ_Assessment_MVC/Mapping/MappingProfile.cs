@@ -11,6 +11,14 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<CreatePersonViewModel, PersonDto>();
+        CreateMap<CreateAccountViewModel, AccountDto>();
+        CreateMap<CreateTransactionViewModel, TransactionDto>();
+
+        CreateMap<ViewPersonViewModel, CreatePersonViewModel>();
+        CreateMap<ViewAccountViewModel, CreateAccountViewModel>();
+        CreateMap<ViewTransactionViewModel, CreateTransactionViewModel>();
+
         CreateMap<PersonDto, ViewPersonViewModel>()
             .ReverseMap();
 

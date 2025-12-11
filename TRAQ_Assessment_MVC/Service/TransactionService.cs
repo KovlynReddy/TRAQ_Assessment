@@ -29,18 +29,16 @@ public class TransactionService : ITransactionService
         return await _client.GetById(id);
     }
 
-    public async Task<TransactionDto> Post(CreateUserViewModel model)
+    public async Task<TransactionDto> Post(CreateTransactionViewModel model)
     {
-        var dto = new TransactionDto() { };
 
-        return await _client.PostJsonAsync(dto);
+        return await _client.PatchJsonSync(_mapper.Map<TransactionDto>(model));
     }
 
-    public async Task<TransactionDto> Update(CreateUserViewModel model)
+    public async Task<TransactionDto> Update(CreateTransactionViewModel model)
     {
-        var dto = new TransactionDto() { };
 
-        return await _client.PatchJsonSync(dto);
+        return await _client.PatchJsonSync(_mapper.Map<TransactionDto>(model));
     }
 
     public async Task<List<ViewTransactionViewModel>> GetViewModelList(int id, int holderCode)

@@ -4,7 +4,7 @@ using TRAQ_Assessment_MVC.Models.User;
 
 namespace TRAQ_Assessment_MVC.Interfaces
 {
-    public interface IPersonService : IBaseInterface<PersonDto, CreateUserViewModel>
+    public interface IPersonService : IBaseInterface<PersonDto, CreatePersonViewModel>
     {
         public Task<List<ViewPersonViewModel>> GetViewModelList();
         public Task<ViewPersonViewModel> GetViewModel(int id);

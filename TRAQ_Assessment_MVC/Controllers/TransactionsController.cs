@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using TRAQ_Assessment_MVC.Interfaces;
 using TRAQ_Assessment_MVC.Models.Person;
 using TRAQ_Assessment_MVC.Models.Transaction;
+using TRAQ_Assessment_MVC.Service;
 
 namespace TRAQ_Assessment_MVC.Controllers;
 
@@ -10,11 +12,13 @@ public class TransactionsController : Controller
 {
     private readonly ITransactionService _transactionService;
     private readonly IPersonService _personService;
+    private readonly IMapper _mapper;
 
-    public TransactionsController(ITransactionService transactionService, IPersonService personService)
+    public TransactionsController(ITransactionService transactionService, IPersonService personService, IMapper mapper)
     {
         this._transactionService = transactionService;
         this._personService = personService;
+        this._mapper = mapper;
     }
 
     public IActionResult Index()
@@ -33,26 +37,30 @@ public class TransactionsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Update()
+    public async Task<IActionResult> Update(int id, int code)
     {
-        return View();
+        var data = await _transactionService.GetViewModel(id);
+
+        return View(_mapper.Map<CreateTransactionViewModel>(data));
     }
 
     [HttpPatch]
     public async Task<IActionResult> Update(CreateTransactionViewModel model)
     {
-        return View();
+        await _transactionService.Post(model);
+        return RedirectToAction(controllerName: "Person", actionName: "Index");
     }
 
     [HttpGet]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create(int id)
     {
-        return View();
+        return View(new CreateTransactionViewModel() { Account_Code = id });
     }
 
     [HttpPost]
     public async Task<IActionResult> Create(CreateTransactionViewModel model)
     {
-        return View();
+        await _transactionService.Post(model);
+        return RedirectToAction(controllerName: "Person", actionName: "Index");
     }
 }

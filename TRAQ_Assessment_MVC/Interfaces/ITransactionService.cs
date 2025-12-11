@@ -6,7 +6,7 @@ using TRAQ_Assessment_MVC.Models.User;
 
 namespace TRAQ_Assessment_MVC.Interfaces
 {
-    public interface ITransactionService : IBaseInterface<TransactionDto, CreateUserViewModel>
+    public interface ITransactionService : IBaseInterface<TransactionDto, CreateTransactionViewModel>
     {
         public Task<List<ViewTransactionViewModel>> GetViewModelList(int id, int holderCode);
         public Task<ViewTransactionViewModel> GetViewModel(int id);

@@ -6,4 +6,7 @@
 
 <partial name="_HolderHeader" model="Model" />
 
+<a class="navbar-brand btn btn-success" asp-area="" asp-controller="Person" asp-action="Update" asp-route-id="@Model.Code">Edit</a>
+<a class="navbar-brand btn btn-primary align-content-center" asp-area="" asp-controller="Account" asp-action="Create" asp-route-id="@Model.Code">Create</a>
+
 <partial name="_AccountsView" model="Model.Accounts" />

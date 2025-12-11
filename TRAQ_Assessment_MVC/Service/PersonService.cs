@@ -34,18 +34,14 @@ public class PersonService : IPersonService
         return await _client.GetById(id);
     }
 
-    public async Task<PersonDto> Post(CreateUserViewModel model)
+    public async Task<PersonDto> Post(CreatePersonViewModel model)
     {
-        var dto = new PersonDto() { };
-
-        return await _client.PostJsonAsync(dto);
+        return await _client.PatchJsonSync(_mapper.Map<PersonDto>(model));
     }
 
-    public async Task<PersonDto> Update(CreateUserViewModel model)
+    public async Task<PersonDto> Update(CreatePersonViewModel model)
     {
-        var dto = new PersonDto() { };
-
-        return await _client.PatchJsonSync(dto);
+        return await _client.PatchJsonSync(_mapper.Map<PersonDto>(model));
     }
 
     public async Task<List<ViewPersonViewModel>> GetViewModelList()

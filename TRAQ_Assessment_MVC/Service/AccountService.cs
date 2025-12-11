@@ -30,14 +30,14 @@ namespace TRAQ_Assessment_MVC.Service
             throw new NotImplementedException();
         }
 
-        public Task<AccountDto> Post(CreateUserViewModel model)
+        public async Task<AccountDto> Post(CreateAccountViewModel model)
         {
-            throw new NotImplementedException();
+            return await _client.PatchJsonSync(_mapper.Map<AccountDto>(model));
         }
 
-        public Task<AccountDto> Update(CreateUserViewModel model)
+        public async Task<AccountDto> Update(CreateAccountViewModel model)
         {
-            throw new NotImplementedException();
+            return await _client.PatchJsonSync(_mapper.Map<AccountDto>(model));
         }
 
         public async Task<List<ViewAccountViewModel>> GetViewModelList(int id)
