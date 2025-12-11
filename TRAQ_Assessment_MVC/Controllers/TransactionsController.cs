@@ -44,17 +44,17 @@ public class TransactionsController : Controller
         return View(_mapper.Map<CreateTransactionViewModel>(data));
     }
 
-    [HttpPatch]
+    [HttpPost]
     public async Task<IActionResult> Update(CreateTransactionViewModel model)
     {
-        await _transactionService.Post(model);
+        await _transactionService.Update(model);
         return RedirectToAction(controllerName: "Person", actionName: "Index");
     }
 
     [HttpGet]
     public async Task<IActionResult> Create(int id)
     {
-        return View(new CreateTransactionViewModel() { Account_Code = id });
+        return View(new CreateTransactionViewModel() { Account_Code = id, Transaction_Date = DateTime.Now, Capture_Date = DateTime.Now });
     }
 
     [HttpPost]

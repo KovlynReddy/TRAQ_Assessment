@@ -47,6 +47,9 @@ public class AccountRepository : IAccountRepository
         if (person == null)
             return null;
 
+        person.Outstanding_Balance = model.Outstanding_Balance;
+        person.Account_Number = model.Account_Number;
+
         await _db.SaveChangesAsync();
 
         return person;

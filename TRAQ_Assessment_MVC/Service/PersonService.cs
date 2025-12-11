@@ -36,7 +36,7 @@ public class PersonService : IPersonService
 
     public async Task<PersonDto> Post(CreatePersonViewModel model)
     {
-        return await _client.PatchJsonSync(_mapper.Map<PersonDto>(model));
+        return await _client.PostJsonAsync(_mapper.Map<PersonDto>(model));
     }
 
     public async Task<PersonDto> Update(CreatePersonViewModel model)

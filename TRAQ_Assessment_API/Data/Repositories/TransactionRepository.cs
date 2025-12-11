@@ -47,6 +47,11 @@ public class TransactionRepository : ITransactionRepository
         if (person == null)
             return null;
 
+        person.Description = model.Description;
+        person.Capture_Date = model.Capture_Date;
+        person.Transaction_Date = model.Transaction_Date;
+        person.Amount = model.Amount;
+
         await _db.SaveChangesAsync();
 
         return person;

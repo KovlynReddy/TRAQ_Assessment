@@ -32,7 +32,7 @@ public class TransactionService : ITransactionService
     public async Task<TransactionDto> Post(CreateTransactionViewModel model)
     {
 
-        return await _client.PatchJsonSync(_mapper.Map<TransactionDto>(model));
+        return await _client.PostJsonAsync(_mapper.Map<TransactionDto>(model));
     }
 
     public async Task<TransactionDto> Update(CreateTransactionViewModel model)

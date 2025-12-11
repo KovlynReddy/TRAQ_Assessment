@@ -32,7 +32,7 @@ namespace TRAQ_Assessment_MVC.Service
 
         public async Task<AccountDto> Post(CreateAccountViewModel model)
         {
-            return await _client.PatchJsonSync(_mapper.Map<AccountDto>(model));
+            return await _client.PostJsonAsync(_mapper.Map<AccountDto>(model));
         }
 
         public async Task<AccountDto> Update(CreateAccountViewModel model)

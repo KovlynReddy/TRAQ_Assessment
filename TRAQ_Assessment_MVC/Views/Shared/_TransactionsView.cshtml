@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.Capture_Date)
             </td>
             <td>
-                    <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Transactions" asp-action="Update" asp-route-id="@item.Account_Code" asp-route-code="@item.Code">edit</a>
+                    <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Transactions" asp-action="Update" asp-route-id="@item.Code">edit</a>
                     <a class="navbar-brand btn btn-info" asp-area="" asp-controller="Transactions" asp-action="Details" asp-route-id="@item.Code" asp-route-holderId="@item.HolderCode">View</a>
                     <a class="navbar-brand btn btn-danger" asp-area="" asp-controller="Transactions" asp-action="Details">delete</a>
             </td>

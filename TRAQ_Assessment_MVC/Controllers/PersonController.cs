@@ -43,10 +43,10 @@ public class PersonController : Controller
         return View(_mapper.Map<CreatePersonViewModel>(await _personService.GetViewModel(id)));
     }
 
-    [HttpPatch]
+    [HttpPost]
     public async Task<IActionResult> Update(CreatePersonViewModel model)
     {
-        await _personService.Post(model);
+        await _personService.Update(model);
         return RedirectToAction(controllerName: "Person", actionName: "Index");
     }
 

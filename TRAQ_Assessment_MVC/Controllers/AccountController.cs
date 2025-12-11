@@ -47,7 +47,7 @@ public class AccountController : Controller
         return View(_mapper.Map<CreateAccountViewModel>(await _accountService.GetViewModel(id)));
     }
 
-    [HttpPatch]
+    [HttpPost]
     public async Task<IActionResult> Update(CreateAccountViewModel model)
     {
         await _accountService.Update(model);
