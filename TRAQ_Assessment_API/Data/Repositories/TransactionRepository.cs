@@ -46,6 +46,7 @@ public class TransactionRepository : ITransactionRepository
         var account = await _db.Accounts.FirstAsync(m => m.Code == model.Account_Code);
 
         account.Outstanding_Balance += model.Amount;
+        model.Capture_Date = DateTime.Now;
 
         await _db.Transactions.AddAsync(model);
         await _db.SaveChangesAsync();
@@ -63,6 +64,7 @@ public class TransactionRepository : ITransactionRepository
 
         person.Description = model.Description;
         person.Transaction_Date = model.Transaction_Date;
+        person.Capture_Date = DateTime.Now;
         person.Amount = model.Amount;
 
         var account = await _db.Accounts.FirstAsync(m => m.Code == model.Account_Code);
