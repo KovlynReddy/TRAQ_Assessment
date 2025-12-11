@@ -13,4 +13,7 @@ public class TraqDBContext : DbContext
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
+
+    public DbSet<TraqUser> Users { get; set; }
+    public DbSet<Status> Status { get; set; }
 }

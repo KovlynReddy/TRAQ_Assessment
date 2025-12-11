@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Outstanding_Balance)
             </td>
             <td>
-                    <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Account" asp-action="Update" asp-route-id="@item.Person_Code" asp-route-code="@item.Code">edit</a>
+                    <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Account" asp-action="Update" asp-route-id="@item.Code">edit</a>
                     <a class="navbar-brand btn btn-info" asp-area="" asp-controller="Account" asp-action="Details" asp-route-id="@item.Code" asp-route-holderId="@item.Person_Code">View</a>
                     <a class="navbar-brand btn btn-danger" asp-area="" asp-controller="Account" asp-action="Delete">delete</a>
             </td>

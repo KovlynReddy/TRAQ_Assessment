@@ -7,4 +7,5 @@ public interface IRepositoryBase<T>
     public Task<List<T>> GetList(int id);
     public Task<T> Post(T model);
     public Task<T> Update(T model);
+    public Task<T> Delete(int id);
 }

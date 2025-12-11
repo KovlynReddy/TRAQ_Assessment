@@ -13,6 +13,11 @@ namespace TRAQ_Assessment_API.Data.Repositories
             _db = db;
         }
 
+        public Task<TraqUser> Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TraqUser> GetById(int id)
         {
             throw new NotImplementedException();

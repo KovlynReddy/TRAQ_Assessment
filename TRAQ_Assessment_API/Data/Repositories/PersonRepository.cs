@@ -3,6 +3,7 @@ using TRAQ_Assessment_DLL.Entities;
 using TRAQ_Assessment_API.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.ComponentModel;
 
 namespace TRAQ_Assessment_API.Data.Repositories;
 
@@ -13,6 +14,20 @@ public class PersonRepository : IPersonRepository
     public PersonRepository(TraqDBContext db)
     {
         _db = db;
+    }
+
+    public async Task<Person> Delete(int id)
+    {
+        var model = await _db.Persons.FirstAsync(m => m.Code == id);
+        if (await ValidateDelete(model))
+        {
+            return null;
+        }
+
+        _db.Persons.Remove(model);
+        await _db.SaveChangesAsync();
+
+        return model;
     }
 
     public async Task<Person> GetById(int id)
@@ -33,7 +48,10 @@ public class PersonRepository : IPersonRepository
     public async Task<Person> Post(Person model)
     {
         // Person Validation 
-
+        if (await Validate(model))
+        {
+            return null;
+        }
 
         await _db.Persons.AddAsync(model);
         await _db.SaveChangesAsync();
@@ -50,14 +68,31 @@ public class PersonRepository : IPersonRepository
     {
         var person = await _db.Persons.FindAsync(model.Code);
 
-        if (person == null)
+        if (person == null || await Validate(person))
             return null;
 
         person.Name = model.Name;
         person.Surname = model.Surname;
+        person.ID_Number = model.ID_Number;
 
         await _db.SaveChangesAsync();
 
         return person;
+    }
+
+    private async Task<bool> Validate(Person model)
+    { 
+        var validate = await _db.Persons.FirstOrDefaultAsync(m => m.ID_Number == model.ID_Number && m.Code != model.Code);
+
+        return validate != null;
+    }
+
+    private async Task<bool> ValidateDelete(Person model)
+    {
+        var buffer = await _db.Accounts.Where(m => m.Person_Code == model.Code).ToListAsync();
+        var validateAccounts = (buffer).Count > 0;
+        var validate = await _db.Persons.FirstOrDefaultAsync(k => k.ID_Number == model.ID_Number);
+
+        return validate != null || validateAccounts;
     }
 }
