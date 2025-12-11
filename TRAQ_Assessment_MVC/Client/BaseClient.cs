@@ -13,9 +13,9 @@ public class BaseClient<T>
         this.Url = $"https://localhost:7258/api/{controllerName}";
     }
 
-    public async Task<T> GetById(string id)
+    public async Task<T> GetById(int id)
     {
-        var response = await client.GetAsync(Url+"/id");
+        var response = await client.GetAsync(Url+$"/{id}");
         response.EnsureSuccessStatusCode();
 
         var responseJson = await response.Content.ReadAsStringAsync();
@@ -29,6 +29,19 @@ public class BaseClient<T>
     public async Task<List<T>> GetList()
     {
         var response = await client.GetAsync(Url);
+        response.EnsureSuccessStatusCode();
+
+        var responseJson = await response.Content.ReadAsStringAsync();
+
+        return JsonSerializer.Deserialize<List<T>>(responseJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+    }
+
+    public async Task<List<T>> GetList(int id)
+    {
+        var response = await client.GetAsync(Url+$"/list/{id}");
         response.EnsureSuccessStatusCode();
 
         var responseJson = await response.Content.ReadAsStringAsync();

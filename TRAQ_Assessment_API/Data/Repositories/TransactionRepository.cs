@@ -24,8 +24,16 @@ public class TransactionRepository : ITransactionRepository
         return await _db.Transactions.ToListAsync();
     }
 
+    public async Task<List<Transaction>> GetList(int id)
+    {
+        return await _db.Transactions.Where(m => m.Account_Code == id).ToListAsync();
+    }
+
     public async Task<Transaction> Post(Transaction model)
     {
+        // Transaction Validation 
+
+
         await _db.Transactions.AddAsync(model);
         await _db.SaveChangesAsync();
 

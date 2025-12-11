@@ -24,7 +24,12 @@ public class PersonService : IPersonService
         return await _client.GetList();
     }
 
-    public async Task<PersonDto> GetById(string id)
+    public async Task<List<PersonDto>> GetList(int id)
+    {
+        return await _client.GetList();
+    }
+
+    public async Task<PersonDto> GetById(int id)
     {
         return await _client.GetById(id);
     }
@@ -48,5 +53,12 @@ public class PersonService : IPersonService
         var data = await GetList();
 
         return _mapper.Map<List<ViewPersonViewModel>>(data);
+    }
+
+    public async Task<ViewPersonViewModel> GetViewModel(int id)
+    {
+        var data = await GetById(id);
+
+        return _mapper.Map<ViewPersonViewModel>(data);
     }
 }

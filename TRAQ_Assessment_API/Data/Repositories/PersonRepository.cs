@@ -25,8 +25,16 @@ public class PersonRepository : IPersonRepository
         return await _db.Persons.ToListAsync();
     }
 
+    public async Task<List<Person>> GetList(int id)
+    {
+        return await _db.Persons.ToListAsync();
+    }
+
     public async Task<Person> Post(Person model)
     {
+        // Person Validation 
+
+
         await _db.Persons.AddAsync(model);
         await _db.SaveChangesAsync();
 

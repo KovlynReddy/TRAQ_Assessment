@@ -29,6 +29,8 @@ public class PersonController : ControllerBase
     [HttpGet("{id}")]
     public async Task<PersonDto> GetId(int id)
     {
+        // get list of Accounts
+
         return _mapper.Map<PersonDto>(await _repo.GetById(id));
     }
 

@@ -20,7 +20,7 @@ public class UserService : IUserService
         return await _client.GetList();
     }
 
-    public async Task<TraqUserDto> GetById(string id)
+    public async Task<TraqUserDto> GetById(int id)
     {
         return await _client.GetById(id);
     }
@@ -37,5 +37,10 @@ public class UserService : IUserService
         var dto = new TraqUserDto() { };
 
         return await _client.PatchJsonSync(dto);
+    }
+
+    public Task<List<TraqUserDto>> GetList(int id)
+    {
+        throw new NotImplementedException();
     }
 }

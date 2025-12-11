@@ -24,8 +24,16 @@ public class AccountRepository : IAccountRepository
         return await _db.Accounts.ToListAsync();
     }
 
+    public async Task<List<Account>> GetList(int id)
+    {
+        return await _db.Accounts.Where(m => m.Person_Code == id).ToListAsync();
+    }
+
     public async Task<Account> Post(Account model)
     {
+        // account Validation 
+
+
         await _db.Accounts.AddAsync(model);
         await _db.SaveChangesAsync();
 

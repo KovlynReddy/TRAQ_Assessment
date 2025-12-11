@@ -23,6 +23,11 @@ namespace TRAQ_Assessment_API.Data.Repositories
             throw new NotImplementedException();
         }
 
+        public Task<List<TraqUser>> GetList(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<TraqUser> Post(TraqUser model)
         {
             throw new NotImplementedException();

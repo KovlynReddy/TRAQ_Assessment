@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace TRAQ_Assessment_DLL.DTOs;
 
 public class AccountDto
-{    public int Code { get; set; }
+{    
+    public int Code { get; set; }
     public int Person_Code { get; set; }
     public string Account_Number { get; set; }
     public decimal Outstanding_Balance { get; set; }

@@ -21,7 +21,7 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Details(string id)
+    public async Task<IActionResult> Details(int id)
     {
         return View(await _userService.GetById(id));
     }

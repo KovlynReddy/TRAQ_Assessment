@@ -1,7 +1,9 @@
-﻿using TRAQ_Assessment_DLL.Constants;
+﻿using AutoMapper;
+using TRAQ_Assessment_DLL.Constants;
 using TRAQ_Assessment_DLL.DTOs;
 using TRAQ_Assessment_MVC.Client;
 using TRAQ_Assessment_MVC.Interfaces;
+using TRAQ_Assessment_MVC.Models.Transaction;
 using TRAQ_Assessment_MVC.Models.User;
 
 namespace TRAQ_Assessment_MVC.Service;
@@ -9,10 +11,12 @@ namespace TRAQ_Assessment_MVC.Service;
 public class TransactionService : ITransactionService
 {
     private readonly BaseClient<TransactionDto> _client;
+    private readonly IMapper _mapper;
 
-    public TransactionService()
+    public TransactionService(IMapper mapper)
     {
-        this._client = new BaseClient<TransactionDto>(UrlConstants.User);
+        this._client = new BaseClient<TransactionDto>(UrlConstants.Transaction);
+        this._mapper = mapper;
     }
 
     public async Task<List<TransactionDto>> GetList()
@@ -20,7 +24,7 @@ public class TransactionService : ITransactionService
         return await _client.GetList();
     }
 
-    public async Task<TransactionDto> GetById(string id)
+    public async Task<TransactionDto> GetById(int id)
     {
         return await _client.GetById(id);
     }
@@ -37,5 +41,31 @@ public class TransactionService : ITransactionService
         var dto = new TransactionDto() { };
 
         return await _client.PatchJsonSync(dto);
+    }
+
+    public async Task<List<ViewTransactionViewModel>> GetViewModelList(int id, int holderCode)
+    {
+        var data = await GetList(id);
+
+        var viewModel = _mapper.Map<List<ViewTransactionViewModel>>(data);
+
+        foreach (var item in viewModel)
+        {
+            item.HolderCode = holderCode;
+        }
+
+        return viewModel;
+    }
+
+    public async Task<ViewTransactionViewModel> GetViewModel(int id)
+    {
+        var data = await GetById(id);
+
+        return _mapper.Map<ViewTransactionViewModel>(data);
+    }
+
+    public async Task<List<TransactionDto>> GetList(int id)
+    {
+        return await _client.GetList(id);
     }
 }

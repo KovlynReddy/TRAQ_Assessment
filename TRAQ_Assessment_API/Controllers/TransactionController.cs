@@ -19,10 +19,10 @@ public class TransactionController : Controller
         this._mapper = mapper;
     }
 
-    [HttpGet]
-    public async Task<List<TransactionDto>> GetList()
+    [HttpGet("list/{id}")]
+    public async Task<List<TransactionDto>> GetList(int id)
     {
-        return _mapper.Map<List<TransactionDto>>(await _repo.GetList());
+        return _mapper.Map<List<TransactionDto>>(await _repo.GetList(id));
     }
 
     [HttpGet("{id}")]

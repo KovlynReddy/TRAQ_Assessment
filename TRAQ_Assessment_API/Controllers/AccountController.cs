@@ -20,10 +20,10 @@ public class AccountController : Controller
         this._mapper = mapper;
     }
 
-    [HttpGet]
-    public async Task<List<AccountDto>> GetList()
+    [HttpGet("list/{id}")]
+    public async Task<List<AccountDto>> GetList(int id)
     {
-        return _mapper.Map<List<AccountDto>>(await _repo.GetList());
+        return _mapper.Map<List<AccountDto>>(await _repo.GetList(id));
     }
 
     [HttpGet("{id}")]
