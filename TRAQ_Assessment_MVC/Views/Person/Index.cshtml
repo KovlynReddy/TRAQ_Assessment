@@ -4,11 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<a class="navbar-brand btn btn-primary align-content-center" asp-area="" asp-controller="Person" asp-action="Create">Create</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -43,9 +40,9 @@
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Person" asp-action="Update" asp-route-id="@item.Code">Edit</a>
                 <a class="navbar-brand btn btn-info" asp-area="" asp-controller="Person" asp-action="Details" asp-route-id="@item.Code">View</a>
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a class="navbar-brand btn btn-danger" asp-area="" asp-controller="Person" asp-action="Delete" asp-route-id="@item.Code">Delete</a>
             </td>
         </tr>
 }

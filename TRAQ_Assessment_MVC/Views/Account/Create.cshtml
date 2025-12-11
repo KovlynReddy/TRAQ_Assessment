@@ -1,0 +1,40 @@
+﻿@model TRAQ_Assessment_MVC.Models.Account.CreateAccountViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Person_Code" class="control-label"></label>
+                <input asp-for="Person_Code" class="form-control" />
+                <span asp-validation-for="Person_Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Account_Number" class="control-label"></label>
+                <input asp-for="Account_Number" class="form-control" />
+                <span asp-validation-for="Account_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Outstanding_Balance" class="control-label"></label>
+                <input asp-for="Outstanding_Balance" class="form-control" />
+                <span asp-validation-for="Outstanding_Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

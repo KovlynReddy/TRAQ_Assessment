@@ -4,41 +4,42 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="row">
+<div class="col-sm-4">
 
-<partial name="_HolderHeader" model="Model.HolderDetails" />
-<div>
-    <h4>ViewAccountViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Person_Code)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Person_Code)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Account_Number)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Account_Number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Outstanding_Balance)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Outstanding_Balance)
-        </dd>
-    </dl>
+        <partial name="_HolderHeader" model="Model.HolderDetails" />
 </div>
+
+    <div class="col-sm-8">
+        <div>
+            <dl class="row">
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Person_Code)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Person_Code)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Account_Number)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Account_Number)
+                </dd>
+                <dt class="col-sm-6">
+                    @Html.DisplayNameFor(model => model.Outstanding_Balance)
+                </dt>
+                <dd class="col-sm-6">
+                    @Html.DisplayFor(model => model.Outstanding_Balance)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
 <partial name="_TransactionsView" model="Model.Transactions" />
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>

@@ -1,8 +1,7 @@
 ﻿@model IEnumerable<TRAQ_Assessment_MVC.Models.Transaction.ViewTransactionViewModel>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<a class="navbar-brand btn btn-primary align-content-center" asp-area="" asp-controller="Transactions" asp-action="Create">Create</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -49,9 +48,9 @@
                 @Html.DisplayFor(modelItem => item.Capture_Date)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    <a class="navbar-brand btn btn-success" asp-area="" asp-controller="Transactions" asp-action="Update">edit</a>
                     <a class="navbar-brand btn btn-info" asp-area="" asp-controller="Transactions" asp-action="Details" asp-route-id="@item.Code" asp-route-holderId="@item.HolderCode">View</a>
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <a class="navbar-brand btn btn-danger" asp-area="" asp-controller="Transactions" asp-action="Details">delete</a>
             </td>
         </tr>
 }

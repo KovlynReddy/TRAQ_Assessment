@@ -1,0 +1,50 @@
+﻿@model TRAQ_Assessment_MVC.Models.Transaction.CreateTransactionViewModel
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Code" class="control-label"></label>
+                <input asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Account_Code" class="control-label"></label>
+                <input asp-for="Account_Code" class="form-control" />
+                <span asp-validation-for="Account_Code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction_Date" class="control-label"></label>
+                <input asp-for="Transaction_Date" class="form-control" />
+                <span asp-validation-for="Transaction_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capture_Date" class="control-label"></label>
+                <input asp-for="Capture_Date" class="form-control" />
+                <span asp-validation-for="Capture_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
