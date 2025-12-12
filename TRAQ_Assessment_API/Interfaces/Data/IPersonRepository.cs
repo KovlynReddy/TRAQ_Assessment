@@ -4,5 +4,5 @@ namespace TRAQ_Assessment_API.Interfaces.Data;
 
 public interface IPersonRepository : IRepositoryBase<Person>
 {
-    public Task<Person> Search(int id, string query);
+    public Task<List<Person>> Search(string query);
 }

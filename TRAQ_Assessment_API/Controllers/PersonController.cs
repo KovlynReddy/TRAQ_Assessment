@@ -26,6 +26,12 @@ public class PersonController : ControllerBase
         return _mapper.Map<List<PersonDto>>(await _repo.GetList());
     }
 
+    [HttpGet("search/{query}")]
+    public async Task<List<PersonDto>> Search(string query)
+    {
+        return _mapper.Map<List<PersonDto>>(await _repo.Search(query));
+    }
+
     [HttpGet("{id}")]
     public async Task<PersonDto> GetId(int id)
     {

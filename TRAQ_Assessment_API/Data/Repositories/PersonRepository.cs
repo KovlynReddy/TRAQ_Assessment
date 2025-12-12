@@ -1,9 +1,7 @@
-﻿using TRAQ_Assessment_API.Interfaces.Data;
-using TRAQ_Assessment_DLL.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 using TRAQ_Assessment_API.Data.DBContext;
-using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.ComponentModel;
+using TRAQ_Assessment_API.Interfaces.Data;
+using TRAQ_Assessment_DLL.Entities;
 
 namespace TRAQ_Assessment_API.Data.Repositories;
 
@@ -59,9 +57,11 @@ public class PersonRepository : IPersonRepository
         return model;
     }
 
-    public async Task<Person> Search(int id, string query)
+    public async Task<List<Person>> Search(string query)
     {
-        return await _db.Persons.FirstAsync(m => m.Code == id || m.Surname.ToLower().Contains(query.ToLower()));
+        var accounts = (await _db.Accounts.Where(m => m.Account_Number.ToLower().Contains(query.ToLower())).ToListAsync()).Select(k => k.Person_Code);
+
+        return await _db.Persons.Where(m => m.Surname.ToLower().Contains(query.ToLower()) || m.ID_Number.ToLower().Contains(query.ToLower()) || accounts.Contains(m.Code)).ToListAsync();
     }
 
     public async Task<Person> Update(Person model)

@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Index";
 }
+<form asp-controller="Person" asp-action="Search" method="get">
+    <input type="text" name="query" class="form-control" placeholder="Search..." />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 <a class="navbar-brand btn btn-primary align-content-center" asp-area="" asp-controller="Person" asp-action="Create">Create</a>
 

@@ -8,5 +8,6 @@ namespace TRAQ_Assessment_MVC.Interfaces
     {
         public Task<List<ViewPersonViewModel>> GetViewModelList();
         public Task<ViewPersonViewModel> GetViewModel(int id);
+        public Task<List<ViewPersonViewModel>> Search(string query);
     }
 }

@@ -57,4 +57,9 @@ public class PersonService : IPersonService
 
         return _mapper.Map<ViewPersonViewModel>(data);
     }
+
+    public async Task<List<ViewPersonViewModel>> Search(string query)
+    {
+            return _mapper.Map<List<ViewPersonViewModel>>(await _client.Search(query));
+    }
 }

@@ -52,6 +52,19 @@ public class BaseClient<T>
         });
     }
 
+    public async Task<List<T>> Search(string query)
+    {
+        var response = await client.GetAsync(Url+$"/search/{query}");
+        response.EnsureSuccessStatusCode();
+
+        var responseJson = await response.Content.ReadAsStringAsync();
+
+        return JsonSerializer.Deserialize<List<T>>(responseJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
+    }
+
     public async Task<T?> PostJsonAsync(T body)
     {
         var json = JsonSerializer.Serialize(body);

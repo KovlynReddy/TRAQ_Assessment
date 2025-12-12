@@ -63,4 +63,10 @@ public class PersonController : Controller
         return RedirectToAction(controllerName: "Person", actionName: "Index");
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Search(string query)
+    {
+        return View("Index", await _personService.Search(query));
+    }
+
 }
