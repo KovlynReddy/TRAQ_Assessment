@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TRAQ_Assessment_API.Data.DBContext;
 
@@ -10,9 +11,11 @@ using TRAQ_Assessment_API.Data.DBContext;
 namespace TRAQ_Assessment_API.Migrations
 {
     [DbContext(typeof(TraqDBContext))]
-    partial class TraqDBContextModelSnapshot : ModelSnapshot
+    [Migration("20251212001710_AddStatusAndUser")]
+    partial class AddStatusAndUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -10,6 +10,13 @@ public class TraqDBContext : DbContext
     {
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Ignore<Account>();
+        modelBuilder.Ignore<Person>();
+        modelBuilder.Ignore<Transaction>();
+    }
+
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Person> Persons { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
